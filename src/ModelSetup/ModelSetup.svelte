@@ -153,7 +153,7 @@
   #sidePanelimg {
     width: 100px; /* or whatever size you need */
     height: auto;
-    left: 5px;
+    left: 15px;
     position: relative;
   }
   #sideP {
