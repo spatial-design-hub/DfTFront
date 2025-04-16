@@ -5,3 +5,4 @@ export const map = writable(null);
 export const min = writable(null);
 export const max = writable(null);
 export const legendName = writable(null);
+export const progDone = writable(null);

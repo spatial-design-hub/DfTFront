@@ -3,139 +3,144 @@
   import TransportResultsModeShare from "./TransportResultsModeShare.svelte";
   import TransportResults from "./TransportResultsModeShare.svelte";
   import TransportResultsTotalKm from "./TransportResultsTotalKM.svelte";
-  import { map, min, max, legendName } from "../../../store";
+  import { map, min, max, legendName, progDone } from "../../../store";
   let selectedOption = "co2";
   export let scenarioName;
 
   // Only one selected type at a time
   let selected = "transport";
 
-  $: if (selected == "transport") {
-    $map.setPaintProperty("dft-directed-layer", "line-color", [
-      "interpolate",
-      ["linear"],
-      ["get", "FlowDiff"],
-      -6000,
-      "darkgreen", // Strongly negative = green
-      -2000,
-      "green",
-      -500,
-      "limegreen", // Still negative, lighter green
-      0,
-      "yellow", // Neutral
-      100,
-      "orange", // Mild positive
-      200,
-      "red", // Strong positive = red
-    ]);
-
-    document.getElementsByClassName("legendContainerDemand")[0].style.opacity =
-      0;
-    document.getElementsByClassName("legendContainerCO2Diff")[0].style.opacity =
-      0;
-    document.getElementsByClassName(
-      "legendContainerDemandDiff"
-    )[0].style.opacity = 1;
-  }
-  $: if (selected == "air") {
-    if (selectedOption == "co2") {
+  $: if ($progDone) {
+    if (selected == "transport") {
       $map.setPaintProperty("dft-directed-layer", "line-color", [
         "interpolate",
         ["linear"],
-        ["get", "CO2Diff"],
-        -1703238,
+        ["get", "FlowDiff"],
+        -6000,
         "darkgreen", // Strongly negative = green
-        -342420,
+        -2000,
         "green",
-        -32263,
-        "limegreen", // Still negative, lighter green
-        0,
-        "yellow", // Neutral
-        1000,
-        "orange", // Mild positive
-        5000,
-        "red", // Strong positive = red
-      ]);
-      document.getElementsByClassName(
-        "legendContainerDemand"
-      )[0].style.opacity = 0;
-      document.getElementsByClassName(
-        "legendContainerDemandDiff"
-      )[0].style.opacity = 0;
-      document.getElementsByClassName(
-        "legendContainerCO2Diff"
-      )[0].style.opacity = 1;
-
-      $min = "-2M";
-      $max = "5K";
-      $legendName = "CO2";
-    }
-    if (selectedOption == "nox") {
-      $map.setPaintProperty("dft-directed-layer", "line-color", [
-        "interpolate",
-        ["linear"],
-        ["get", "NOxDiff"],
-        -3000,
-        "darkgreen", // Strongly negative = green
         -500,
-        "green",
-        -100,
         "limegreen", // Still negative, lighter green
         0,
         "yellow", // Neutral
-        5,
+        100,
         "orange", // Mild positive
-        10,
+        200,
         "red", // Strong positive = red
       ]);
+
       document.getElementsByClassName(
         "legendContainerDemand"
       )[0].style.opacity = 0;
       document.getElementsByClassName(
-        "legendContainerDemandDiff"
-      )[0].style.opacity = 0;
-      document.getElementsByClassName(
         "legendContainerCO2Diff"
-      )[0].style.opacity = 1;
-
-      $min = "-3K";
-      $max = "10";
-      $legendName = "NOx";
-    }
-    if (selectedOption == "pm10") {
-      $map.setPaintProperty("dft-directed-layer", "line-color", [
-        "interpolate",
-        ["linear"],
-        ["get", "PM10Diff"],
-        -50,
-        "darkgreen", // Strongly negative = green
-        -10,
-        "green",
-        -5,
-        "limegreen", // Still negative, lighter green
-        0,
-        "yellow", // Neutral
-        0,
-        "orange", // Mild positive
-        1,
-        "red", // Strong positive = red
-      ]);
-      document.getElementsByClassName(
-        "legendContainerDemand"
       )[0].style.opacity = 0;
       document.getElementsByClassName(
         "legendContainerDemandDiff"
-      )[0].style.opacity = 0;
-      document.getElementsByClassName(
-        "legendContainerCO2Diff"
       )[0].style.opacity = 1;
-
-      $min = "-50";
-      $max = "1";
-      $legendName = "PM10";
     }
   }
+  $: if ($progDone) {
+    if (selected == "air") {
+      if (selectedOption == "co2") {
+        $map.setPaintProperty("dft-directed-layer", "line-color", [
+          "interpolate",
+          ["linear"],
+          ["get", "CO2Diff"],
+          -1703238,
+          "darkgreen", // Strongly negative = green
+          -342420,
+          "green",
+          -32263,
+          "limegreen", // Still negative, lighter green
+          0,
+          "yellow", // Neutral
+          1000,
+          "orange", // Mild positive
+          5000,
+          "red", // Strong positive = red
+        ]);
+        document.getElementsByClassName(
+          "legendContainerDemand"
+        )[0].style.opacity = 0;
+        document.getElementsByClassName(
+          "legendContainerDemandDiff"
+        )[0].style.opacity = 0;
+        document.getElementsByClassName(
+          "legendContainerCO2Diff"
+        )[0].style.opacity = 1;
 
+        $min = "-2M";
+        $max = "5K";
+        $legendName = "CO2";
+      }
+      if (selectedOption == "nox") {
+        $map.setPaintProperty("dft-directed-layer", "line-color", [
+          "interpolate",
+          ["linear"],
+          ["get", "NOxDiff"],
+          -3000,
+          "darkgreen", // Strongly negative = green
+          -500,
+          "green",
+          -100,
+          "limegreen", // Still negative, lighter green
+          0,
+          "yellow", // Neutral
+          5,
+          "orange", // Mild positive
+          10,
+          "red", // Strong positive = red
+        ]);
+        document.getElementsByClassName(
+          "legendContainerDemand"
+        )[0].style.opacity = 0;
+        document.getElementsByClassName(
+          "legendContainerDemandDiff"
+        )[0].style.opacity = 0;
+        document.getElementsByClassName(
+          "legendContainerCO2Diff"
+        )[0].style.opacity = 1;
+
+        $min = "-3K";
+        $max = "10";
+        $legendName = "NOx";
+      }
+      if (selectedOption == "pm10") {
+        $map.setPaintProperty("dft-directed-layer", "line-color", [
+          "interpolate",
+          ["linear"],
+          ["get", "PM10Diff"],
+          -50,
+          "darkgreen", // Strongly negative = green
+          -10,
+          "green",
+          -5,
+          "limegreen", // Still negative, lighter green
+          0,
+          "yellow", // Neutral
+          0,
+          "orange", // Mild positive
+          1,
+          "red", // Strong positive = red
+        ]);
+        document.getElementsByClassName(
+          "legendContainerDemand"
+        )[0].style.opacity = 0;
+        document.getElementsByClassName(
+          "legendContainerDemandDiff"
+        )[0].style.opacity = 0;
+        document.getElementsByClassName(
+          "legendContainerCO2Diff"
+        )[0].style.opacity = 1;
+
+        $min = "-50";
+        $max = "1";
+        $legendName = "PM10";
+      }
+    }
+  }
   function selectType(type) {
     selected = selected === type ? null : type;
   }

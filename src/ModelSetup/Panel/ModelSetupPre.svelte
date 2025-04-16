@@ -1,5 +1,5 @@
 <script>
-  import { sidePanelSelection } from "../../store";
+  import { sidePanelSelection, progDone } from "../../store";
   import BusSlider from "./BusSlider.svelte";
   import RailSlider from "./RailSlider.svelte";
   import Results from "./Results/Results.svelte";
@@ -17,13 +17,51 @@
     setTimeout(() => {
       runScenario = true;
       progressBar = false;
-    }, 5000);
+      $progDone = true;
+    }, 10000);
+  }
+  import { onMount } from "svelte";
+  let progress = 5;
+  let interval;
+
+  $: if (progressBar) {
+    interval = setInterval(() => {
+      if (progress < 100) {
+        progress += 1;
+      } else {
+        clearInterval(interval);
+      }
+    }, 1000);
   }
 </script>
 
 <div class="sidePanel" style="width: {$sidePanelSelection ? '500px' : '0px'};">
   {#if progressBar}
-    <h1>Loading</h1>
+    <h4
+      style="    position: relative;
+    top: 275px;
+    left: 25px;"
+    >
+      Loading...
+    </h4>
+    <div
+      style="width: 90%;
+    background-color: rgb(255 255 255);
+    border-radius: 8px;
+    overflow: hidden;
+    height: 24px;
+    border: grey 1px solid;
+    left: 5%;
+    top: 30vh;
+    margin-top: 10px;
+    position: relative;"
+    >
+      <div
+        style="height: 100%; background-color: #201b59; width: {progress}%; transition: width 0.5s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;"
+      >
+        {progress}%
+      </div>
+    </div>
   {:else if !runScenario}
     <div style="margin:20px">
       <h3>Create a policy scenario for Base Scenario</h3>
