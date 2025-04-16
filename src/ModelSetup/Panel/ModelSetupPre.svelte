@@ -18,7 +18,7 @@
       runScenario = true;
       progressBar = false;
       $progDone = true;
-    }, 10000);
+    }, 8000);
   }
   import { onMount } from "svelte";
   let progress = 5;
@@ -42,7 +42,7 @@
     top: 275px;
     left: 25px;"
     >
-      Loading...
+      Preparing Scenario...
     </h4>
     <div
       style="width: 90%;
