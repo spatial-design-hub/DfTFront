@@ -25,5 +25,8 @@
     "simple-statistics": "^7.8.8",
     "sirv-cli": "^2.0.0",
     "svelte-spa-router": "^4.0.1"
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
