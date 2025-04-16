@@ -54,7 +54,6 @@
               type: "geojson",
               data: data,
             });
-            console.log(data.features);
             const sortedValues = data.features
               .map((d) => d.properties["BaseFlow"])
               .sort((a, b) => a - b);

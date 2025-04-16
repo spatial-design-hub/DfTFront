@@ -4,6 +4,7 @@
   import RailSlider from "./RailSlider.svelte";
   import Results from "./Results/Results.svelte";
   let selected = "Bus";
+  let progressBar;
   const modes = ["Bus", "Rail", "Car"];
   let runScenario = false;
   let scenarioName = "";
@@ -12,12 +13,18 @@
       alert("Enter Scenario Name");
       return;
     }
-    runScenario = true;
+    progressBar = true;
+    setTimeout(() => {
+      runScenario = true;
+      progressBar = false;
+    }, 5000);
   }
 </script>
 
 <div class="sidePanel" style="width: {$sidePanelSelection ? '500px' : '0px'};">
-  {#if !runScenario}
+  {#if progressBar}
+    <h1>Loading</h1>
+  {:else if !runScenario}
     <div style="margin:20px">
       <h3>Create a policy scenario for Base Scenario</h3>
       <label for="scenarioName">Name:</label>
