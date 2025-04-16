@@ -32,6 +32,10 @@
   <div class="image-stack">
     <ModelSetup />
     <div id="sideP">
+      <img id="sidePanelimg" src="static/img/setup.svg" alt="title" />
+      <p>Model Setup</p>
+    </div>
+    <div id="sideP">
       <img id="sidePanelimg" src="static/img/NETWORKEDITOR.svg" alt="title" />
       <p>Network</p>
     </div>
@@ -98,7 +102,7 @@
     top: 50px;
     position: absolute;
     height: calc(100vh);
-
+    padding: 5px;
     background: linear-gradient(
       to bottom,
       #29245e 0%,

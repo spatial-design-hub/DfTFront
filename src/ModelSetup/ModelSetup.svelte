@@ -40,7 +40,7 @@
         curve: 1.42, // optional: curvature of the fly path
       });
       setTimeout(() => {
-        fetch("static/data/network.geojson")
+        fetch("static/data/network_v2.geojson")
           .then((response) => response.json())
           .then((data) => {
             // Check if the source already exists (optional cleanup)
@@ -108,8 +108,8 @@
 </script>
 
 <div id="sideP" on:click={changeBg} style="background-color: {bgColor}">
-  <img id="sidePanelimg" src="static/img/setup.svg" alt="title" />
-  <p>Model Setup</p>
+  <img id="sidePanelimg" src="static/img/scenario.svg" alt="title" />
+  <p>Scenario Builder</p>
 </div>
 
 <div id="modelSelector" style="width: {bgColor == '' ? '0px' : '300px'};">
@@ -176,7 +176,7 @@
     width: 0px;
     position: fixed;
 
-    left: 100px;
+    left: 124px;
     height: 150px;
     border: 1px solid #ccc; /* light grey border */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow */
