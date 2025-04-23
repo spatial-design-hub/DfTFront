@@ -44,7 +44,7 @@
   {#if progressBar}
     <h4
       style="    position: absolute;
-    top: 28vh;
+    top: 100px;
     left: 25px;"
     >
       Preparing Scenario...
