@@ -42,29 +42,34 @@
     : '0px'};visibility: {$sidePanelSelection ? 'visible' : 'hidden'}"
 >
   {#if progressBar}
-    <h4
+    <div
       style="    position: absolute;
-    top: 100px;
+    top: 30vh;
+    width: 100%;
     left: 25px;"
     >
-      Preparing Scenario...
-    </h4>
-    <div
-      style="width: 90%;
+      <h4
+        style="    position: relative;
+    top: 15px;"
+      >
+        Preparing Scenario...
+      </h4>
+      <div
+        style="width: 90%;
     background-color: rgb(255 255 255);
     border-radius: 8px;
     overflow: hidden;
     height: 24px;
     border: grey 1px solid;
-    left: 5%;
-    top: 30vh;
+  
     margin-top: 10px;
-    position: relative;"
-    >
-      <div
-        style="height: 100%; background-color: #201b59; width: {progress}%; transition: width 0.5s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;"
+   "
       >
-        {progress}%
+        <div
+          style="height: 100%; background-color: #201b59; width: {progress}%; transition: width 0.5s; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;"
+        >
+          {progress}%
+        </div>
       </div>
     </div>
   {:else if !runScenario}
