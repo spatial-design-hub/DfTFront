@@ -106,7 +106,7 @@
   }
 </script>
 
-<div id="sideP" on:click={changeBg} style="background-color: {bgColor}">
+<div id="sidePP" on:click={changeBg} style="background-color: {bgColor}">
   <img id="sidePanelimg" src="static/img/scenario.svg" alt="title" />
   <p>Scenario Builder</p>
 </div>
@@ -156,10 +156,11 @@
     left: 15px;
     position: relative;
   }
-  #sideP {
+  #sidePP {
     height: 120px;
+    width: 110%;
   }
-  #sideP:hover {
+  #sidePP:hover {
     background-color: rgba(154, 200, 215, 0.4);
   }
   p {

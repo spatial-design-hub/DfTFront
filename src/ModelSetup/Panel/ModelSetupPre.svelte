@@ -35,11 +35,16 @@
   }
 </script>
 
-<div class="sidePanel" style="width: {$sidePanelSelection ? '500px' : '0px'};">
+<div
+  class="sidePanel"
+  style="width: {$sidePanelSelection
+    ? '500px'
+    : '0px'};visibility: {$sidePanelSelection ? 'visible' : 'hidden'}"
+>
   {#if progressBar}
     <h4
-      style="    position: relative;
-    top: 275px;
+      style="    position: absolute;
+    top: 28vh;
     left: 25px;"
     >
       Preparing Scenario...

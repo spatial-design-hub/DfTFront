@@ -98,6 +98,7 @@
   #sidePanel {
     cursor: default;
     left: 0px;
+    overflow: hidden;
     z-index: 1000;
     top: 50px;
     position: absolute;
@@ -128,13 +129,14 @@
     align-items: center; /* optional, centers horizontally */
   }
   #sidePanelimg {
-    width: 100px; /* or whatever size you need */
+    width: 100px;
     height: auto;
-    left: 5px;
+    left: 20px;
     position: relative;
   }
   #sideP {
     height: 120px;
+    width: 110%;
   }
   #sideP:hover {
     background-color: rgba(154, 200, 215, 0.4);

@@ -6,6 +6,7 @@ body {
 }
 
 body {
+  overflow: hidden;
   color: #333;
   margin: 0;
   padding: 8px;
